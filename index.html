@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Budget Mint - Mobile App</title>
+
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+
+    <!-- Tailwind Custom Configuration (Optional but good for your brand colors) -->
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        brandGreen: '#0C4E3C', // আপনার অ্যাপের ডার্ক গ্রিন
+                        brandMint: '#2EBD85',  // আপনার অ্যাপের লাইট গ্রিন
+                    }
+                }
+            }
+        }
+    </script>
+
+    <!-- Your Custom CSS File -->
+    <link rel="stylesheet" href="styles/style.css">
+</head>
+<body class="bg-gray-50 text-gray-900">
+
+    <!-- Test Tailwind -->
+    <div class="min-h-screen flex items-center justify-center bg-gray-900">
+        <h1 class="text-4xl font-bold text-brandMint">
+            Welcome to Budget Mint!
+        </h1>
+    </div>
+
+    <!-- Your Custom JS File -->
+    <script src="script/script.js"></script>
+</body>
+</html>
