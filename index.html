@@ -3,392 +3,396 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Budget Mint — Budget smarter. Travel fairer.</title>
+    <title>Budget Mint — Track your money. Split trips fairly.</title>
+    <meta name="description" content="Budget Mint — personal budget + group tour bill-split in one modern finance app. Track income, debts, budgets, and settle trips fairly. Private by design.">
+    <link rel="icon" type="image/png" href="images/budget-mint-logo.png">
+    <script>
+      (function () {
+        try {
+          if (localStorage.getItem('bm-theme') === 'dark') {
+            document.documentElement.classList.add('dark');
+          }
+        } catch (e) {}
+      })();
+    </script>
 
-    <!-- Fonts: geometric sans -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
 
-    <!-- Tailwind CSS CDN -->
     <script src="https://cdn.tailwindcss.com"></script>
-    <script>
-        tailwind.config = {
-            theme: {
-                extend: {
-                    colors: {
-                        brandGreen: '#0C4E3C',
-                        brandMint: '#2EBD85',
-                        cream: '#F7F4EF',
-                    },
-                    fontFamily: {
-                        sans: ['"Plus Jakarta Sans"', 'system-ui', 'sans-serif'],
-                    },
-                    boxShadow: {
-                        soft: '0 10px 40px -12px rgba(12, 78, 60, 0.12)',
-                        glow: '0 0 60px rgba(46, 189, 133, 0.35)',
-                    },
-                },
-            },
-        };
-    </script>
-
+    <script src="script/tailwind.config.js"></script>
     <link rel="stylesheet" href="styles/style.css">
-    <style>
-        .hero-pattern {
-            background-image:
-                radial-gradient(rgba(46, 189, 133, 0.08) 1px, transparent 1px);
-            background-size: 28px 28px;
-        }
-        .glass-badge {
-            background: rgba(255, 255, 255, 0.12);
-            backdrop-filter: blur(12px);
-            -webkit-backdrop-filter: blur(12px);
-            border: 1px solid rgba(255, 255, 255, 0.22);
-        }
-    </style>
 </head>
-<body class="font-sans bg-cream text-slate-900 antialiased">
+<body class="font-sans bg-brandGreen text-slate-900 antialiased">
 
-    <!-- ========== Sticky Navbar ========== -->
-    <header class="sticky top-0 z-50 border-b border-slate-100 bg-white/95 backdrop-blur">
-        <nav class="mx-auto flex max-w-7xl items-center justify-between gap-4 px-6 py-4 lg:px-8">
-            <!-- Brand -->
-            <a href="#" class="flex items-center gap-2.5 shrink-0">
-                <span class="flex h-9 w-9 items-center justify-center rounded-xl bg-brandGreen text-sm font-bold text-brandMint">BM</span>
-                <span class="text-lg font-bold tracking-tight text-brandGreen">Budget Mint</span>
-            </a>
-
-            <!-- Center links (desktop) -->
-            <ul class="hidden items-center gap-8 md:flex">
-                <li><a href="#features" class="text-sm font-medium text-slate-600 transition hover:text-brandGreen">Features</a></li>
-                <li><a href="#how-it-works" class="text-sm font-medium text-slate-600 transition hover:text-brandGreen">How it Works</a></li>
-                <li><a href="#reviews" class="text-sm font-medium text-slate-600 transition hover:text-brandGreen">Reviews</a></li>
-                <li><a href="#download" class="text-sm font-medium text-slate-600 transition hover:text-brandGreen">Download</a></li>
-            </ul>
-
-            <!-- Right CTA + mobile menu -->
-            <div class="flex items-center gap-3">
-                <a href="#download"
-                   class="hidden rounded-full bg-brandMint px-5 py-2.5 text-sm font-semibold text-brandGreen shadow-sm transition hover:brightness-105 sm:inline-flex">
-                    Get the App
+    <!-- ========== Sticky Glass Navbar ========== -->
+    <header class="nav-glass-wrap fixed inset-x-0 top-0 z-50 px-3 pt-3 sm:px-5 sm:pt-4">
+        <div class="nav-glass mx-auto max-w-7xl">
+            <nav class="flex items-center justify-between gap-4 px-4 sm:px-5 lg:px-6">
+                <a href="index.html" class="flex shrink-0 items-center gap-2.5">
+                    <img src="images/budget-mint-logo.png" alt="Budget Mint" class="h-9 w-9 rounded-xl object-cover sm:h-10 sm:w-10" width="40" height="40">
+                    <span class="text-lg font-bold tracking-tight text-brandGreen">Budget <span class="text-brandMint">Mint</span></span>
                 </a>
-                <button id="nav-toggle" type="button" aria-label="Open menu" aria-expanded="false"
-                        class="inline-flex h-10 w-10 items-center justify-center rounded-lg text-brandGreen md:hidden">
-                    <svg id="nav-icon-open" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
-                        <path stroke-linecap="round" stroke-linejoin="round" d="M4 6h16M4 12h16M4 18h16"/>
-                    </svg>
-                    <svg id="nav-icon-close" class="hidden h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
-                        <path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12"/>
-                    </svg>
-                </button>
-            </div>
-        </nav>
 
-        <!-- Mobile menu -->
-        <div id="mobile-menu" class="hidden border-t border-slate-100 bg-white px-6 py-4 md:hidden">
-            <ul class="flex flex-col gap-3">
-                <li><a href="#features" class="block py-2 text-sm font-medium text-slate-700">Features</a></li>
-                <li><a href="#how-it-works" class="block py-2 text-sm font-medium text-slate-700">How it Works</a></li>
-                <li><a href="#reviews" class="block py-2 text-sm font-medium text-slate-700">Reviews</a></li>
-                <li><a href="#download" class="block py-2 text-sm font-medium text-slate-700">Download</a></li>
-                <li>
-                    <a href="#download" class="mt-1 inline-flex w-full items-center justify-center rounded-full bg-brandMint px-5 py-2.5 text-sm font-semibold text-brandGreen">
-                        Get the App
+                <ul class="nav-links hidden items-center gap-7 md:flex">
+                    <li><a href="#features" class="text-sm font-medium transition">Features</a></li>
+                    <li><a href="#tours" class="text-sm font-medium transition">Tours</a></li>
+                    <li><a href="#trust" class="text-sm font-medium transition">Privacy</a></li>
+                    <li><a href="#download" class="text-sm font-medium transition">Download</a></li>
+                </ul>
+
+                <div class="flex items-center gap-2 sm:gap-3">
+                    <button id="theme-toggle" type="button" aria-label="Switch to dark mode" aria-pressed="false"
+                            class="inline-flex h-10 w-10 items-center justify-center rounded-full transition">
+                        <svg class="theme-icon-sun h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.75" aria-hidden="true">
+                            <path stroke-linecap="round" stroke-linejoin="round" d="M21.752 15.002A9.72 9.72 0 0118 15.75c-5.385 0-9.75-4.365-9.75-9.75 0-1.33.266-2.597.748-3.752A9.753 9.753 0 003 11.25C3 16.635 7.365 21 12.75 21a9.753 9.753 0 009.002-5.998z"/>
+                        </svg>
+                        <svg class="theme-icon-moon h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.75" aria-hidden="true">
+                            <path stroke-linecap="round" stroke-linejoin="round" d="M12 3v2.25m6.364.386l-1.591 1.591M21 12h-2.25m-.386 6.364l-1.591-1.591M12 18.75V21m-4.773-4.227l-1.591 1.591M5.25 12H3m4.227-4.773L5.636 5.636M15.75 12a3.75 3.75 0 11-7.5 0 3.75 3.75 0 017.5 0z"/>
+                        </svg>
+                    </button>
+                    <a href="#download"
+                       class="btn-solid cta-hover hidden rounded-full bg-white px-5 py-2.5 text-sm font-semibold text-brandGreen shadow-sm sm:inline-flex">
+                        Get Budget Mint
                     </a>
-                </li>
-            </ul>
+                    <button id="nav-toggle" type="button" aria-label="Open menu" aria-expanded="false"
+                            class="inline-flex h-10 w-10 items-center justify-center rounded-full md:hidden">
+                        <svg id="nav-icon-open" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                            <path stroke-linecap="round" stroke-linejoin="round" d="M4 6h16M4 12h16M4 18h16"/>
+                        </svg>
+                        <svg id="nav-icon-close" class="hidden h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                            <path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12"/>
+                        </svg>
+                    </button>
+                </div>
+            </nav>
+
+            <div id="mobile-menu" class="nav-glass-menu hidden px-4 pb-4 md:hidden">
+                <ul class="flex flex-col gap-1 border-t pt-3">
+                    <li><a href="#features" class="block rounded-lg px-3 py-2.5 text-sm font-medium">Features</a></li>
+                    <li><a href="#tours" class="block rounded-lg px-3 py-2.5 text-sm font-medium">Tours</a></li>
+                    <li><a href="#trust" class="block rounded-lg px-3 py-2.5 text-sm font-medium">Privacy</a></li>
+                    <li><a href="#download" class="block rounded-lg px-3 py-2.5 text-sm font-medium">Download</a></li>
+                    <li>
+                        <a href="#download" class="btn-solid mt-2 inline-flex w-full items-center justify-center rounded-full bg-white px-5 py-2.5 text-sm font-semibold text-brandGreen">
+                            Get Budget Mint
+                        </a>
+                    </li>
+                </ul>
+            </div>
         </div>
     </header>
 
-    <!-- ========== Hero (Dark Green) ========== -->
-    <section id="download" class="relative overflow-hidden bg-brandGreen hero-pattern">
-        <div class="pointer-events-none absolute -right-24 top-10 h-80 w-80 rounded-full bg-brandMint/20 blur-3xl"></div>
-        <div class="pointer-events-none absolute -left-20 bottom-0 h-72 w-72 rounded-full bg-teal-500/10 blur-3xl"></div>
+    <!-- ========== Hero ========== -->
+    <section class="relative min-h-[100vh] overflow-hidden hero-finance pt-24 sm:pt-28">
+        <div class="pointer-events-none absolute inset-0 hero-finance__glow" aria-hidden="true"></div>
+        <div class="pointer-events-none absolute inset-0 hero-spotlight" aria-hidden="true"></div>
+        <canvas class="pointer-events-none absolute inset-0 hero-particles" aria-hidden="true"></canvas>
+        <div class="pointer-events-none absolute inset-0 hero-finance__grid" data-parallax="0.012" aria-hidden="true"></div>
+        <div class="pointer-events-none absolute inset-0 hero-finance__arcs" data-parallax="0.02" aria-hidden="true"></div>
+        <div class="pointer-events-none absolute inset-0 hero-finance__bars" data-parallax="0.015" aria-hidden="true"></div>
+        <div class="pointer-events-none absolute inset-0 hero-orbs" data-parallax="0.02" aria-hidden="true">
+            <span class="hero-orb hero-orb--1"></span>
+            <span class="hero-orb hero-orb--2"></span>
+            <span class="hero-orb hero-orb--3"></span>
+            <span class="hero-orb hero-orb--4"></span>
+            <span class="hero-orb hero-orb--5"></span>
+        </div>
 
-        <div class="relative mx-auto grid max-w-7xl items-center gap-12 px-6 py-16 lg:grid-cols-2 lg:gap-16 lg:px-8 lg:py-24">
-            <!-- Left copy -->
-            <div class="text-center lg:text-left">
-                <span class="inline-flex items-center rounded-full border border-brandMint/30 bg-white/5 px-4 py-1.5 text-sm font-medium text-brandMint">
-                    Track every taka. Split every trip.
-                </span>
-
-                <h1 class="mt-6 text-4xl font-extrabold leading-[1.1] tracking-tight text-white sm:text-5xl lg:text-6xl">
-                    Budget <span class="text-brandMint">smarter</span>.
-                    Travel <span class="text-brandMint">fairer</span>.
+        <div class="relative z-10 mx-auto grid max-w-7xl items-center gap-10 px-6 py-16 lg:grid-cols-12 lg:gap-8 lg:px-8 lg:py-20">
+            <div class="reveal lg:col-span-5">
+                <h1 class="text-5xl font-extrabold tracking-tight text-white sm:text-6xl lg:text-7xl">
+                    Budget <span class="text-brandMint">Mint</span>
                 </h1>
-
-                <p class="mt-6 max-w-xl text-lg leading-relaxed text-teal-100/90 mx-auto lg:mx-0">
-                    আপনার সব হিসাব, এক নজরে। Track income, set budgets, and split group trip expenses fairly—all in one app.
+                <p class="mt-5 text-xl font-semibold leading-snug text-teal-50 sm:text-2xl">
+                    Track your money. Split trips fairly. Stay private.
                 </p>
-
-                <div class="mt-9 flex flex-col items-center gap-3 sm:flex-row lg:justify-start">
-                    <a href="#"
-                       class="inline-flex w-full items-center justify-center gap-2 rounded-full bg-brandMint px-7 py-3.5 text-base font-semibold text-brandGreen shadow-glow transition hover:brightness-105 sm:w-auto">
-                        <svg class="h-5 w-5" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
-                            <path d="M3.6 2.7c-.3.2-.6.6-.6 1.1v16.4c0 .5.3.9.6 1.1l9.1-9.3L3.6 2.7zm11.1 6.2L6.4 3.2l9.6 5.5-1.3.2zm.9 1.1l1.8 1-1.8 1.1-1.4-1.1 1.4-1zM6.4 20.8l8.3-5.7 1.3.2-9.6 5.5zm9.7-4.6l3.2-1.8c.7-.4.7-1.5 0-1.9l-3.2-1.8-1.6 1.7 1.6 1.7z"/>
-                        </svg>
-                        অ্যাপ ডাউনলোড করুন
+                <p class="mt-5 max-w-md text-base leading-relaxed text-teal-100/85 sm:text-lg">
+                    Personal budgeting and group tour splits — in one app. Income, expenses, debts, alerts, and reports all in one place.
+                </p>
+                <div class="mt-9 flex flex-col gap-3 sm:flex-row">
+                    <a href="#download"
+                       class="btn-solid cta-hover inline-flex items-center justify-center rounded-full bg-white px-7 py-3.5 text-base font-semibold text-brandGreen shadow-soft">
+                        Get Budget Mint
                     </a>
                     <a href="#features"
-                       class="inline-flex w-full items-center justify-center rounded-full border border-white/30 px-7 py-3.5 text-base font-semibold text-white transition hover:border-brandMint hover:text-brandMint sm:w-auto">
+                       class="inline-flex items-center justify-center rounded-full border border-white/30 px-7 py-3.5 text-base font-semibold text-white transition hover:border-brandMint hover:bg-white/5 hover:text-brandMint">
                         Explore Features
                     </a>
                 </div>
             </div>
 
-            <!-- Right: phone mockup + floating badges -->
-            <div class="relative mx-auto flex w-full max-w-md items-center justify-center lg:max-w-none">
-                <div class="pointer-events-none absolute h-72 w-72 rounded-full bg-brandMint/25 blur-3xl sm:h-96 sm:w-96"></div>
-
-                <!-- Floating badge: top-left -->
-                <div class="glass-badge absolute -left-2 top-16 z-20 rounded-2xl px-4 py-3 shadow-lg sm:-left-6 sm:top-24">
-                    <p class="text-xs font-medium text-teal-100/80">Monthly budget</p>
-                    <p class="text-sm font-bold text-white">৳15,000 Budget Set</p>
-                </div>
-
-                <!-- Floating badge: bottom-right -->
-                <div class="glass-badge absolute -right-2 bottom-20 z-20 rounded-2xl px-4 py-3 shadow-lg sm:-right-4 sm:bottom-28">
-                    <p class="text-xs font-medium text-teal-100/80">Group tour</p>
-                    <p class="text-sm font-bold text-brandMint">✓ Trip Settled</p>
-                </div>
-
-                <!-- Phone frame -->
-                <div class="relative z-10 aspect-[9/19] w-64 overflow-hidden rounded-[2.5rem] border-[6px] border-teal-950/80 bg-slate-900 shadow-glow sm:w-72">
-                    <div class="absolute inset-x-0 top-0 z-10 flex justify-center pt-2.5">
-                        <div class="h-1.5 w-20 rounded-full bg-black/40"></div>
+            <div class="reveal reveal-delay-1 relative lg:col-span-7">
+                <div class="hero-visual mx-auto max-w-lg lg:ml-auto lg:mr-0 lg:max-w-none">
+                    <div class="phone-frame phone-frame--hero mx-auto w-[min(100%,18.5rem)] sm:w-[20rem] lg:w-[21.5rem]">
+                        <img src="images/1.jpg" data-light="images/1.jpg" data-dark="images/1-dark.jpg" alt="Budget Mint home dashboard with income, expenses, and monthly budget" class="phone-screen" width="390" height="844">
                     </div>
-                    <img
-                        src="images/1.jpg"
-                        alt="Budget Mint home dashboard"
-                        class="h-full w-full object-cover object-top"
-                    />
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- ========== Features Grid (Cream) ========== -->
-    <section id="features" class="bg-cream py-20 sm:py-28">
-        <div class="mx-auto max-w-7xl px-6 lg:px-8">
-            <div class="mx-auto max-w-2xl text-center">
-                <h2 class="text-3xl font-bold tracking-tight text-brandGreen sm:text-4xl">
-                    Everything You Need for Your Finances
-                </h2>
-                <p class="mt-4 text-lg text-slate-600">
-                    From daily ledgers to group trips — built for clarity, privacy, and Bangladesh-first money tracking.
-                </p>
+    <!-- ========== Why unique ========== -->
+    <section id="why" class="relative overflow-hidden bg-brandGreen py-20 sm:py-28">
+        <div class="pointer-events-none absolute inset-0 why-premium" aria-hidden="true"></div>
+        <div class="relative mx-auto max-w-7xl px-6 lg:px-8">
+            <div class="reveal mx-auto max-w-2xl text-center">
+                <p class="text-sm font-semibold uppercase tracking-[0.22em] text-brandMint">Why Budget Mint</p>
+                <h2 class="mt-4 text-3xl font-bold tracking-tight text-white sm:text-5xl">Built for real money habits</h2>
+                <p class="mt-4 text-lg text-teal-100/80">Personal finance and fair trip splits — together, privately.</p>
             </div>
-
-            <div class="mt-14 grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3">
-                <!-- Smart Ledger -->
-                <article class="rounded-2xl bg-white p-7 shadow-soft transition hover:-translate-y-0.5 hover:shadow-lg">
-                    <div class="mb-5 flex h-12 w-12 items-center justify-center rounded-xl bg-brandMint/15 text-brandGreen">
-                        <svg class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.75" aria-hidden="true">
-                            <path stroke-linecap="round" stroke-linejoin="round" d="M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25H12"/>
-                        </svg>
+            <div class="reveal mt-14 overflow-hidden rounded-[1.75rem] border border-white/10 bg-white/[0.06] backdrop-blur-md sm:mt-16">
+                <div class="grid grid-cols-1 divide-y divide-white/10 sm:grid-cols-2 sm:divide-x sm:divide-y-0 lg:grid-cols-4">
+                    <div class="why-cell">
+                        <p class="text-4xl font-extrabold tracking-tight text-brandMint sm:text-5xl">1</p>
+                        <p class="mt-3 text-sm font-semibold text-white">App for both</p>
+                        <p class="mt-2 text-sm leading-relaxed text-teal-100/70">Personal ledger + tour splits in one place.</p>
                     </div>
-                    <h3 class="text-lg font-bold text-brandGreen">Smart Ledger</h3>
-                    <p class="mt-2 text-slate-600">Daily and monthly views so every taka is organized and easy to review.</p>
-                </article>
-
-                <!-- Budget Limits -->
-                <article class="rounded-2xl bg-white p-7 shadow-soft transition hover:-translate-y-0.5 hover:shadow-lg">
-                    <div class="mb-5 flex h-12 w-12 items-center justify-center rounded-xl bg-brandMint/15 text-brandGreen">
-                        <svg class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.75" aria-hidden="true">
-                            <path stroke-linecap="round" stroke-linejoin="round" d="M2.25 18L9 11.25l4.306 4.307a11.95 11.95 0 015.814-5.519l2.74-1.22m0 0l-5.94-2.28m5.94 2.28l-2.28 5.941"/>
-                        </svg>
+                    <div class="why-cell">
+                        <p class="text-4xl font-extrabold tracking-tight text-brandMint sm:text-5xl">4+</p>
+                        <p class="mt-3 text-sm font-semibold text-white">Languages</p>
+                        <p class="mt-2 text-sm leading-relaxed text-teal-100/70">English, Bangla, Hindi &amp; Urdu UI.</p>
                     </div>
-                    <h3 class="text-lg font-bold text-brandGreen">Budget Limits</h3>
-                    <p class="mt-2 text-slate-600">Track spent vs remaining in real time and stay ahead of overspending.</p>
-                </article>
-
-                <!-- Analytics -->
-                <article class="rounded-2xl bg-white p-7 shadow-soft transition hover:-translate-y-0.5 hover:shadow-lg">
-                    <div class="mb-5 flex h-12 w-12 items-center justify-center rounded-xl bg-brandMint/15 text-brandGreen">
-                        <svg class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.75" aria-hidden="true">
-                            <path stroke-linecap="round" stroke-linejoin="round" d="M10.5 6a7.5 7.5 0 107.5 7.5h-7.5V6z"/>
-                            <path stroke-linecap="round" stroke-linejoin="round" d="M13.5 10.5H21A7.5 7.5 0 0013.5 3v7.5z"/>
-                        </svg>
+                    <div class="why-cell">
+                        <p class="text-4xl font-extrabold tracking-tight text-brandMint sm:text-5xl">Local</p>
+                        <p class="mt-3 text-sm font-semibold text-white">First</p>
+                        <p class="mt-2 text-sm leading-relaxed text-teal-100/70">On-device SQLite. Cloud only if you opt in.</p>
                     </div>
-                    <h3 class="text-lg font-bold text-brandGreen">Analytics</h3>
-                    <p class="mt-2 text-slate-600">Clear distribution charts that show where your money actually goes.</p>
-                </article>
-
-                <!-- Tours / Split Bills -->
-                <article class="rounded-2xl bg-white p-7 shadow-soft transition hover:-translate-y-0.5 hover:shadow-lg">
-                    <div class="mb-5 flex h-12 w-12 items-center justify-center rounded-xl bg-brandMint/15 text-brandGreen">
-                        <svg class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.75" aria-hidden="true">
-                            <path stroke-linecap="round" stroke-linejoin="round" d="M18 18.72a9.094 9.094 0 003.741-.479 3 3 0 00-4.682-2.72m.94 3.198l.001.031c0 .225-.012.447-.037.666A11.944 11.944 0 0112 21c-2.17 0-4.207-.576-5.963-1.584A6.062 6.062 0 016 18.719m12 0a5.971 5.971 0 00-.941-3.197m0 0A5.995 5.995 0 0012 12.75a5.995 5.995 0 00-5.058 2.772m0 0a3 3 0 00-4.681 2.72 8.986 8.986 0 003.74.477m.94-3.197a5.971 5.971 0 00-.94 3.197M15 6.75a3 3 0 11-6 0 3 3 0 016 0zm6 3a2.25 2.25 0 11-4.5 0 2.25 2.25 0 014.5 0zm-13.5 0a2.25 2.25 0 11-4.5 0 2.25 2.25 0 014.5 0z"/>
-                        </svg>
+                    <div class="why-cell">
+                        <p class="text-4xl font-extrabold tracking-tight text-brandMint sm:text-5xl">Lock</p>
+                        <p class="mt-3 text-sm font-semibold text-white">Private</p>
+                        <p class="mt-2 text-sm leading-relaxed text-teal-100/70">Amount mask + biometric app lock.</p>
                     </div>
-                    <h3 class="text-lg font-bold text-brandGreen">Tours / Split Bills</h3>
-                    <p class="mt-2 text-slate-600">Invite with codes, share expenses, and settle balances without awkward math.</p>
-                </article>
-
-                <!-- Privacy -->
-                <article class="rounded-2xl bg-white p-7 shadow-soft transition hover:-translate-y-0.5 hover:shadow-lg">
-                    <div class="mb-5 flex h-12 w-12 items-center justify-center rounded-xl bg-brandMint/15 text-brandGreen">
-                        <svg class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.75" aria-hidden="true">
-                            <path stroke-linecap="round" stroke-linejoin="round" d="M16.5 10.5V6.75a4.5 4.5 0 10-9 0v3.75m-.75 11.25h10.5a2.25 2.25 0 002.25-2.25v-6.75a2.25 2.25 0 00-2.25-2.25H6.75a2.25 2.25 0 00-2.25 2.25v6.75a2.25 2.25 0 002.25 2.25z"/>
-                        </svg>
-                    </div>
-                    <h3 class="text-lg font-bold text-brandGreen">Privacy</h3>
-                    <p class="mt-2 text-slate-600">Hide amounts when you need to, with biometric lock for extra peace of mind.</p>
-                </article>
-
-                <!-- Localization -->
-                <article class="rounded-2xl bg-white p-7 shadow-soft transition hover:-translate-y-0.5 hover:shadow-lg">
-                    <div class="mb-5 flex h-12 w-12 items-center justify-center rounded-xl bg-brandMint/15 text-brandGreen">
-                        <svg class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.75" aria-hidden="true">
-                            <path stroke-linecap="round" stroke-linejoin="round" d="M12 21a9.004 9.004 0 008.716-6.747M12 21a9.004 9.004 0 01-8.716-6.747M12 21c2.485 0 4.5-4.03 4.5-9S14.485 3 12 3m0 18c-2.485 0-4.5-4.03-4.5-9S9.515 3 12 3m0 0a8.997 8.997 0 017.843 4.582M12 3a8.997 8.997 0 00-7.843 4.582m15.686 0A11.953 11.953 0 0112 10.5c-2.998 0-5.74-1.1-7.843-2.918m15.686 0A8.959 8.959 0 0121 12c0 .778-.099 1.533-.284 2.253m0 0A17.919 17.919 0 0112 16.5c-3.162 0-6.133-.815-8.716-2.247m0 0A9.015 9.015 0 013 12c0-1.605.42-3.113 1.157-4.418"/>
-                        </svg>
-                    </div>
-                    <h3 class="text-lg font-bold text-brandGreen">Localization</h3>
-                    <p class="mt-2 text-slate-600">English &amp; Bangla support with a BDT-first experience built for local use.</p>
-                </article>
+                </div>
             </div>
         </div>
     </section>
 
-    <!-- ========== Stats Strip (Dark Green) ========== -->
-    <section id="reviews" class="bg-brandGreen py-14 sm:py-16">
-        <div class="mx-auto grid max-w-7xl grid-cols-2 gap-8 px-6 text-center md:grid-cols-4 lg:px-8">
-            <div>
-                <p class="text-3xl font-extrabold text-brandMint sm:text-4xl">100%</p>
-                <p class="mt-2 text-sm font-medium text-teal-100/90 sm:text-base">Free</p>
-            </div>
-            <div>
-                <p class="text-3xl font-extrabold text-brandMint sm:text-4xl">2+</p>
-                <p class="mt-2 text-sm font-medium text-teal-100/90 sm:text-base">Multi-Language</p>
-            </div>
-            <div>
-                <p class="text-3xl font-extrabold text-brandMint sm:text-4xl">Realtime</p>
-                <p class="mt-2 text-sm font-medium text-teal-100/90 sm:text-base">Cloud Sync</p>
-            </div>
-            <div>
-                <p class="text-3xl font-extrabold text-brandMint sm:text-4xl">Secure</p>
-                <p class="mt-2 text-sm font-medium text-teal-100/90 sm:text-base">Private by Design</p>
-            </div>
+    <!-- ========== Feature showcases ========== -->
+    <section id="features" class="section-cream relative overflow-hidden py-24 sm:py-32" data-mesh-warp>
+        <div class="pointer-events-none absolute inset-0 mesh-warp" aria-hidden="true">
+            <span class="mesh-warp__blob mesh-warp__blob--a"></span>
+            <span class="mesh-warp__blob mesh-warp__blob--b"></span>
+            <span class="mesh-warp__blob mesh-warp__blob--c"></span>
+            <span class="mesh-warp__blob mesh-warp__blob--d"></span>
         </div>
-    </section>
+        <div class="pointer-events-none absolute inset-0 section-cream__mesh" aria-hidden="true"></div>
+        <div class="relative z-10 mx-auto max-w-7xl px-6 lg:px-8">
+            <div class="reveal mx-auto max-w-2xl text-center">
+                <p class="text-sm font-semibold uppercase tracking-[0.22em] text-brandMint">Features</p>
+                <h2 class="mt-4 text-3xl font-bold tracking-tight text-brandGreen sm:text-5xl">Everything for your finances</h2>
+                <p class="mt-5 text-lg leading-relaxed text-slate-600">From daily spending to insights — clarity without the clutter.</p>
+            </div>
 
-    <!-- ========== Tours Deep-dive (White) ========== -->
-    <section id="how-it-works" class="bg-white py-20 sm:py-28">
-        <div class="mx-auto grid max-w-7xl items-center gap-12 px-6 lg:grid-cols-2 lg:gap-20 lg:px-8">
-            <!-- Left: settle-up mockup -->
-            <div class="relative mx-auto w-full max-w-sm">
-                <div class="pointer-events-none absolute inset-0 -translate-x-4 translate-y-4 rounded-[2.5rem] bg-brandMint/15 blur-xl"></div>
-                <div class="relative overflow-hidden rounded-[2rem] border border-slate-200 bg-slate-50 shadow-soft">
-                    <!-- Fake status bar -->
-                    <div class="flex items-center justify-between px-5 pt-4 text-[11px] font-semibold text-slate-500">
-                        <span>9:41</span>
-                        <span class="h-1.5 w-16 rounded-full bg-slate-300"></span>
-                        <span>100%</span>
-                    </div>
-                    <div class="px-5 pb-6 pt-4">
-                        <p class="text-xs font-semibold uppercase tracking-wider text-brandMint">Tours</p>
-                        <h3 class="mt-1 text-xl font-bold text-brandGreen">Cox's Bazar Trip</h3>
-                        <p class="mt-1 text-sm text-slate-500">4 members · Invite: BM-4821</p>
-
-                        <div class="mt-5 space-y-3">
-                            <div class="flex items-center justify-between rounded-xl bg-white px-4 py-3 shadow-sm">
-                                <div>
-                                    <p class="text-sm font-semibold text-slate-800">Hotel (shared)</p>
-                                    <p class="text-xs text-slate-500">Paid by Rafi</p>
-                                </div>
-                                <p class="text-sm font-bold text-slate-900">৳8,400</p>
-                            </div>
-                            <div class="flex items-center justify-between rounded-xl bg-white px-4 py-3 shadow-sm">
-                                <div>
-                                    <p class="text-sm font-semibold text-slate-800">Food &amp; transport</p>
-                                    <p class="text-xs text-slate-500">Paid by Nabila</p>
-                                </div>
-                                <p class="text-sm font-bold text-slate-900">৳3,200</p>
-                            </div>
-                        </div>
-
-                        <div class="mt-5 rounded-2xl bg-brandGreen p-4 text-white">
-                            <p class="text-xs font-medium text-brandMint">Settle up</p>
-                            <p class="mt-1 text-sm font-semibold">Nabila owes Rafi</p>
-                            <p class="mt-2 text-2xl font-extrabold text-brandMint">৳2,600</p>
-                            <button type="button" class="mt-3 w-full rounded-full bg-brandMint py-2 text-sm font-bold text-brandGreen">
-                                Mark as Settled
-                            </button>
+            <div class="reveal feature-row mt-24 grid items-center gap-14 lg:grid-cols-2 lg:gap-20">
+                <div class="order-2 lg:order-1">
+                    <p class="text-sm font-semibold uppercase tracking-[0.2em] text-brandMint">01 — Smart Ledger</p>
+                    <h3 class="mt-4 text-3xl font-bold tracking-tight text-brandGreen sm:text-4xl">Income &amp; expenses at a glance</h3>
+                    <p class="mt-5 text-lg leading-relaxed text-slate-600">
+                        Add income and expenses fast with categories, accounts, and full ledger history — so you always know where every taka goes.
+                    </p>
+                </div>
+                <div class="order-1 flex justify-center lg:order-2">
+                    <div class="phone-stage phone-stage--lg">
+                        <div class="phone-frame w-[min(100%,18rem)] sm:w-[20rem]">
+                            <img src="images/5.jpg" data-light="images/5.jpg" data-dark="images/5-dark.jpg" alt="Transactions screen showing income and expenses" class="phone-screen" width="390" height="844">
                         </div>
                     </div>
                 </div>
             </div>
 
-            <!-- Right: copy -->
-            <div>
-                <p class="text-sm font-semibold uppercase tracking-[0.18em] text-brandMint">Unique differentiator</p>
-                <h2 class="mt-3 text-3xl font-bold tracking-tight text-brandGreen sm:text-4xl">
-                    Split trips fairly — not awkwardly
-                </h2>
-                <p class="mt-5 text-lg leading-relaxed text-slate-600">
-                    Most apps just track spending. Budget Mint lets you create trips, invite friends, add shared expenses, and see exactly who owes whom.
-                </p>
-                <ul class="mt-8 space-y-4">
-                    <li class="flex items-start gap-3">
-                        <span class="mt-1 flex h-6 w-6 shrink-0 items-center justify-center rounded-full bg-brandMint/20 text-brandGreen">
-                            <svg class="h-3.5 w-3.5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="3"><path stroke-linecap="round" stroke-linejoin="round" d="M4.5 12.75l6 6 9-13.5"/></svg>
-                        </span>
-                        <span class="text-slate-700">Create a tour and share an invite code in seconds.</span>
-                    </li>
-                    <li class="flex items-start gap-3">
-                        <span class="mt-1 flex h-6 w-6 shrink-0 items-center justify-center rounded-full bg-brandMint/20 text-brandGreen">
-                            <svg class="h-3.5 w-3.5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="3"><path stroke-linecap="round" stroke-linejoin="round" d="M4.5 12.75l6 6 9-13.5"/></svg>
-                        </span>
-                        <span class="text-slate-700">Log shared expenses as you go — hotel, food, rides.</span>
-                    </li>
-                    <li class="flex items-start gap-3">
-                        <span class="mt-1 flex h-6 w-6 shrink-0 items-center justify-center rounded-full bg-brandMint/20 text-brandGreen">
-                            <svg class="h-3.5 w-3.5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="3"><path stroke-linecap="round" stroke-linejoin="round" d="M4.5 12.75l6 6 9-13.5"/></svg>
-                        </span>
-                        <span class="text-slate-700">See clear settle-up balances so nobody feels shortchanged.</span>
-                    </li>
-                </ul>
+            <div class="reveal feature-row mt-28 grid items-center gap-14 lg:grid-cols-2 lg:gap-20">
+                <div class="flex justify-center">
+                    <div class="phone-stage phone-stage--lg">
+                        <div class="phone-frame w-[min(100%,18rem)] sm:w-[20rem]">
+                            <img src="images/2.jpg" data-light="images/2.jpg" data-dark="images/2-dark.jpg" alt="Budget Management with category breakdown" class="phone-screen" width="390" height="844">
+                        </div>
+                    </div>
+                </div>
+                <div>
+                    <p class="text-sm font-semibold uppercase tracking-[0.2em] text-brandMint">02 — Budget Limits</p>
+                    <h3 class="mt-4 text-3xl font-bold tracking-tight text-brandGreen sm:text-4xl">Stay ahead of overspending</h3>
+                    <p class="mt-5 text-lg leading-relaxed text-slate-600">
+                        Set a monthly budget, watch progress by category, and get notified when you’re near or over the limit — before it hurts.
+                    </p>
+                </div>
+            </div>
+
+            <div class="reveal feature-row mt-28 grid items-center gap-14 lg:grid-cols-2 lg:gap-20">
+                <div class="order-2 lg:order-1">
+                    <p class="text-sm font-semibold uppercase tracking-[0.2em] text-brandMint">03 — Insights</p>
+                    <h3 class="mt-4 text-3xl font-bold tracking-tight text-brandGreen sm:text-4xl">Patterns, not just logs</h3>
+                    <p class="mt-5 text-lg leading-relaxed text-slate-600">
+                        Daily, weekly, and monthly summaries with category breakdowns and trends — so spending habits become clear.
+                    </p>
+                </div>
+                <div class="order-1 flex flex-col items-center gap-6 sm:flex-row sm:justify-center lg:order-2 lg:justify-end">
+                    <div class="phone-stage phone-stage--lg">
+                        <div class="phone-frame w-[min(100%,18rem)] sm:w-[20rem]">
+                            <img src="images/analytics.jpg" data-light="images/analytics.jpg" data-dark="images/analytics-dark.jpg" alt="Analytics distribution and monthly comparison" class="phone-screen" width="390" height="844">
+                        </div>
+                    </div>
+                    <div class="phone-stage phone-stage--lg hidden sm:block sm:translate-y-10">
+                        <div class="phone-frame w-[min(100%,18rem)] sm:w-[20rem]">
+                            <img src="images/6.jpg" data-light="images/6.jpg" data-dark="images/6-dark.jpg" alt="Monthly summary with expense distribution" class="phone-screen" width="390" height="844">
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
     </section>
 
-    <!-- ========== Footer (Dark Green) ========== -->
+    <!-- ========== More tools ========== -->
+    <section id="more" class="section-light relative overflow-hidden py-24 sm:py-32" data-mesh-warp>
+        <div class="pointer-events-none absolute inset-0 mesh-warp" aria-hidden="true">
+            <span class="mesh-warp__blob mesh-warp__blob--a"></span>
+            <span class="mesh-warp__blob mesh-warp__blob--b"></span>
+            <span class="mesh-warp__blob mesh-warp__blob--c"></span>
+            <span class="mesh-warp__blob mesh-warp__blob--d"></span>
+        </div>
+        <div class="pointer-events-none absolute inset-0 section-light__wash" aria-hidden="true"></div>
+        <div class="relative z-10 mx-auto max-w-7xl px-6 lg:px-8">
+            <div class="reveal mx-auto max-w-2xl text-center">
+                <p class="text-sm font-semibold uppercase tracking-[0.22em] text-brandMint">Toolkit</p>
+                <h2 class="mt-4 text-3xl font-bold tracking-tight text-brandGreen sm:text-5xl">More tools built in</h2>
+                <p class="mt-5 text-lg text-slate-600">Debts, accounts, reports, and calculators — without leaving the app.</p>
+            </div>
+            <div class="reveal mt-14 overflow-hidden rounded-[1.75rem] border border-brandGreen/10 bg-white/80 shadow-[0_30px_80px_-40px_rgba(12,78,60,0.35)] backdrop-blur-sm tools-shell">
+                <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4">
+                    <div class="tool-cell"><p class="tool-index">01</p><h3 class="mt-3 text-base font-bold text-brandGreen">Debts — Give / Receive</h3><p class="mt-2 text-sm leading-relaxed text-slate-600">Track what you owe and what’s owed until settled.</p></div>
+                    <div class="tool-cell"><p class="tool-index">02</p><h3 class="mt-3 text-base font-bold text-brandGreen">Multi Accounts</h3><p class="mt-2 text-sm leading-relaxed text-slate-600">Cash, bank, and more — one clear total.</p></div>
+                    <div class="tool-cell"><p class="tool-index">03</p><h3 class="mt-3 text-base font-bold text-brandGreen">Reports &amp; Export</h3><p class="mt-2 text-sm leading-relaxed text-slate-600">PDF or Excel for audit, tax, or sharing.</p></div>
+                    <div class="tool-cell"><p class="tool-index">04</p><h3 class="mt-3 text-base font-bold text-brandGreen">Multi-Profile</h3><p class="mt-2 text-sm leading-relaxed text-slate-600">Personal and business data, kept separate.</p></div>
+                    <div class="tool-cell"><p class="tool-index">05</p><h3 class="mt-3 text-base font-bold text-brandGreen">Notebook</h3><p class="mt-2 text-sm leading-relaxed text-slate-600">Notes and plans next to your money.</p></div>
+                    <div class="tool-cell"><p class="tool-index">06</p><h3 class="mt-3 text-base font-bold text-brandGreen">Finance Calculators</h3><p class="mt-2 text-sm leading-relaxed text-slate-600">EMI, interest, and tax helpers.</p></div>
+                    <div class="tool-cell"><p class="tool-index">07</p><h3 class="mt-3 text-base font-bold text-brandGreen">Cloud Sync</h3><p class="mt-2 text-sm leading-relaxed text-slate-600">Optional backup when you change phones.</p></div>
+                    <div class="tool-cell"><p class="tool-index">08</p><h3 class="mt-3 text-base font-bold text-brandGreen">Biometric Lock</h3><p class="mt-2 text-sm leading-relaxed text-slate-600">Fingerprint or Face ID protection.</p></div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ========== Tours deep-dive ========== -->
+    <section id="tours" class="section-cream relative overflow-hidden py-24 sm:py-32" data-mesh-warp>
+        <div class="pointer-events-none absolute inset-0 mesh-warp" aria-hidden="true">
+            <span class="mesh-warp__blob mesh-warp__blob--a"></span>
+            <span class="mesh-warp__blob mesh-warp__blob--b"></span>
+            <span class="mesh-warp__blob mesh-warp__blob--c"></span>
+            <span class="mesh-warp__blob mesh-warp__blob--d"></span>
+        </div>
+        <div class="pointer-events-none absolute inset-0 section-cream__mesh" aria-hidden="true"></div>
+        <div class="relative z-10 mx-auto max-w-7xl px-6 lg:px-8">
+            <div class="reveal tours-shell grid items-center gap-0 overflow-hidden rounded-[2rem] border border-brandGreen/10 lg:grid-cols-2">
+                <div class="tours-copy px-8 py-12 sm:px-12 sm:py-16 lg:px-14">
+                    <p class="text-sm font-semibold uppercase tracking-[0.2em] text-brandMint">Tour &amp; Group Bill Split</p>
+                    <h2 class="mt-4 text-3xl font-bold tracking-tight text-brandGreen sm:text-4xl">Split trips fairly — not awkwardly</h2>
+                    <p class="mt-5 text-lg leading-relaxed text-slate-600">
+                        Create a tour, invite friends, add shared expenses with equal or custom split, then settle up with clear balances — plus receipts and invoice share.
+                    </p>
+                    <ul class="mt-8 space-y-4">
+                        <li class="check-row"><span class="check-dot" aria-hidden="true"><svg class="h-3.5 w-3.5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="3"><path stroke-linecap="round" stroke-linejoin="round" d="M4.5 12.75l6 6 9-13.5"/></svg></span><span class="text-slate-700">Invite with a code — everyone joins in seconds.</span></li>
+                        <li class="check-row"><span class="check-dot" aria-hidden="true"><svg class="h-3.5 w-3.5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="3"><path stroke-linecap="round" stroke-linejoin="round" d="M4.5 12.75l6 6 9-13.5"/></svg></span><span class="text-slate-700">Equal or custom splits for hotel, food, rides, and more.</span></li>
+                        <li class="check-row"><span class="check-dot" aria-hidden="true"><svg class="h-3.5 w-3.5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="3"><path stroke-linecap="round" stroke-linejoin="round" d="M4.5 12.75l6 6 9-13.5"/></svg></span><span class="text-slate-700">See who owes whom — settle without the calculator drama.</span></li>
+                    </ul>
+                </div>
+                <div class="tours-visual relative flex flex-col items-center justify-center gap-6 px-6 py-12 sm:flex-row sm:px-10 sm:py-16">
+                    <div class="phone-stage"><div class="phone-frame w-[min(100%,15rem)] sm:w-[16rem]"><img src="images/3.jpg" data-light="images/3.jpg" data-dark="images/3-dark.jpg" alt="Your Tours list" class="phone-screen" width="390" height="844"></div></div>
+                    <div class="phone-stage sm:translate-y-8"><div class="phone-frame w-[min(100%,15rem)] sm:w-[16rem]"><img src="images/4.jpg" data-light="images/4.jpg" data-dark="images/4-dark.jpg" alt="Tour settle up" class="phone-screen" width="390" height="844"></div></div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ========== Trust / Privacy ========== -->
+    <section id="trust" class="relative overflow-hidden hero-finance py-24 sm:py-28">
+        <div class="pointer-events-none absolute inset-0 hero-finance__glow" aria-hidden="true"></div>
+        <div class="pointer-events-none absolute inset-0 hero-spotlight" aria-hidden="true"></div>
+        <canvas class="pointer-events-none absolute inset-0 hero-particles" aria-hidden="true"></canvas>
+        <div class="pointer-events-none absolute inset-0 hero-finance__grid" data-parallax="0.012" aria-hidden="true"></div>
+        <div class="pointer-events-none absolute inset-0 hero-finance__arcs" data-parallax="0.02" aria-hidden="true"></div>
+        <div class="pointer-events-none absolute inset-0 hero-finance__bars" data-parallax="0.015" aria-hidden="true"></div>
+        <div class="pointer-events-none absolute inset-0 hero-orbs" data-parallax="0.02" aria-hidden="true">
+            <span class="hero-orb hero-orb--1"></span>
+            <span class="hero-orb hero-orb--2"></span>
+            <span class="hero-orb hero-orb--3"></span>
+            <span class="hero-orb hero-orb--4"></span>
+            <span class="hero-orb hero-orb--5"></span>
+        </div>
+        <div class="relative z-10 mx-auto max-w-7xl px-6 lg:px-8">
+            <div class="reveal mx-auto max-w-2xl text-center">
+                <p class="text-sm font-semibold uppercase tracking-[0.22em] text-brandMint">Trust</p>
+                <h2 class="mt-4 text-3xl font-bold tracking-tight text-white sm:text-5xl">Private by design</h2>
+                <p class="mt-5 text-lg text-teal-100/80">Your money data stays yours — local-first, with optional cloud only when you choose.</p>
+            </div>
+            <div class="mt-14 grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
+                <div class="reveal trust-tile"><h3 class="text-lg font-bold text-brandMint">Privacy Mode</h3><p class="mt-2 text-sm leading-relaxed text-teal-100/80">Mask balances and amounts with *** when someone might see your screen.</p></div>
+                <div class="reveal reveal-delay-1 trust-tile"><h3 class="text-lg font-bold text-brandMint">Biometric Lock</h3><p class="mt-2 text-sm leading-relaxed text-teal-100/80">Fingerprint or Face ID — we don’t collect your biometrics.</p></div>
+                <div class="reveal reveal-delay-2 trust-tile"><h3 class="text-lg font-bold text-brandMint">Local + optional cloud</h3><p class="mt-2 text-sm leading-relaxed text-teal-100/80">SQLite on device; Firebase sync only if you sign in for backup.</p></div>
+                <div class="reveal reveal-delay-3 trust-tile"><h3 class="text-lg font-bold text-brandMint">Your control</h3><p class="mt-2 text-sm leading-relaxed text-teal-100/80">Delete account and data from Settings. We don’t sell finance data.</p></div>
+            </div>
+            <p class="reveal mt-12 text-center"><a href="privacy.html" class="text-sm font-semibold text-brandMint underline-offset-4 transition hover:underline">Read the Privacy Policy →</a></p>
+        </div>
+    </section>
+
+    <!-- ========== Download CTA ========== -->
+    <section id="download" class="relative overflow-hidden bg-brandGreen py-24 sm:py-28">
+        <div class="pointer-events-none absolute inset-0 download-premium" aria-hidden="true"></div>
+        <div class="reveal relative mx-auto max-w-3xl px-6 text-center lg:px-8">
+            <p class="text-sm font-semibold uppercase tracking-[0.22em] text-brandMint">Get the app</p>
+            <h2 class="mt-4 text-3xl font-bold tracking-tight text-white sm:text-5xl">Download Budget Mint Today</h2>
+            <p class="mt-5 text-lg text-teal-100/85">Track every taka. Split every trip. Stay private — free on iOS and Android.</p>
+            <div class="mt-10 flex flex-col items-center justify-center gap-4 sm:flex-row">
+                <a href="#" class="store-badge inline-flex min-w-[12rem] items-center gap-3 rounded-xl bg-black px-5 py-3 text-left text-white transition hover:bg-neutral-900" aria-label="Download on the App Store">
+                    <span class="store-icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="#ffffff" aria-hidden="true"><path d="M18.71 19.5c-.83 1.24-1.71 2.45-3.05 2.47-1.34.03-1.77-.79-3.29-.79-1.53 0-2 .77-3.27.82-1.31.05-2.3-1.32-3.14-2.53C4.25 17 2.94 12.45 4.7 9.39c.87-1.52 2.43-2.48 4.12-2.51 1.28-.02 2.5.87 3.29.87.78 0 2.26-1.07 3.81-.91.65.03 2.47.26 3.64 1.98-.09.06-2.17 1.28-2.15 3.81.03 3.02 2.65 4.03 2.68 4.04-.03.07-.42 1.44-1.38 2.83M13 3.5c.73-.83 1.94-1.46 2.94-1.5.13 1.17-.34 2.35-1.04 3.19-.69.85-1.83 1.51-2.95 1.42-.15-1.15.41-2.35 1.05-3.11z"/></svg></span>
+                    <span class="leading-tight"><span class="block text-[10px] font-medium tracking-wide text-white/80">Download on the</span><span class="block text-lg font-semibold tracking-tight">App Store</span></span>
+                </a>
+                <a href="#" class="store-badge inline-flex min-w-[12rem] items-center gap-3 rounded-xl bg-black px-5 py-3 text-left text-white transition hover:bg-neutral-900" aria-label="Get it on Google Play">
+                    <span class="store-icon" aria-hidden="true"><img src="images/google-play-logo.jpg" alt="" width="36" height="36"></span>
+                    <span class="leading-tight"><span class="block text-[10px] font-medium tracking-wide text-white/80">Get it on</span><span class="block text-lg font-semibold tracking-tight">Google Play</span></span>
+                </a>
+            </div>
+            <p class="mt-8 text-sm text-teal-200/70">Questions? <a href="mailto:support@budgetmint.app" class="font-medium text-brandMint hover:underline">support@budgetmint.app</a></p>
+        </div>
+    </section>
+
+    <!-- ========== Footer ========== -->
     <footer class="bg-brandGreen text-teal-100">
         <div class="mx-auto grid max-w-7xl gap-12 px-6 py-14 sm:grid-cols-2 lg:grid-cols-4 lg:px-8">
             <div class="sm:col-span-2 lg:col-span-1">
-                <div class="flex items-center gap-2.5">
-                    <span class="flex h-9 w-9 items-center justify-center rounded-xl bg-white/10 text-sm font-bold text-brandMint">BM</span>
-                    <span class="text-lg font-bold text-white">Budget Mint</span>
-                </div>
+                <a href="index.html" class="flex items-center gap-2.5">
+                    <img src="images/budget-mint-logo.png" alt="Budget Mint" class="h-10 w-10 rounded-xl object-cover" width="40" height="40">
+                    <span class="text-lg font-bold text-white">Budget <span class="text-brandMint">Mint</span></span>
+                </a>
                 <p class="mt-4 max-w-xs text-sm leading-relaxed text-teal-100/80">
-                    Budget smarter. Travel fairer. Track every taka and split every trip — in English &amp; Bangla.
+                    Track your money. Split trips fairly. Stay private.
                 </p>
             </div>
 
             <div>
-                <h4 class="text-sm font-bold uppercase tracking-wider text-brandMint">Features</h4>
+                <h4 class="text-sm font-bold uppercase tracking-wider text-brandMint">Product</h4>
                 <ul class="mt-4 space-y-2 text-sm">
-                    <li><a href="#features" class="transition hover:text-white">Smart Ledger</a></li>
-                    <li><a href="#features" class="transition hover:text-white">Budget Limits</a></li>
-                    <li><a href="#how-it-works" class="transition hover:text-white">Tours / Split Bills</a></li>
-                    <li><a href="#features" class="transition hover:text-white">Analytics</a></li>
+                    <li><a href="#features" class="transition hover:text-white">Features</a></li>
+                    <li><a href="#tours" class="transition hover:text-white">Tours / Split Bills</a></li>
+                    <li><a href="#trust" class="transition hover:text-white">Privacy &amp; Security</a></li>
+                    <li><a href="#download" class="transition hover:text-white">Download</a></li>
                 </ul>
             </div>
 
             <div>
                 <h4 class="text-sm font-bold uppercase tracking-wider text-brandMint">Support</h4>
                 <ul class="mt-4 space-y-2 text-sm">
-                    <li><a href="#download" class="transition hover:text-white">Download App</a></li>
-                    <li><a href="mailto:support@budgetmint.app" class="transition hover:text-white">Contact Support</a></li>
-                    <li><a href="#how-it-works" class="transition hover:text-white">How it Works</a></li>
+                    <li><a href="help.html" class="transition hover:text-white">Help Center</a></li>
+                    <li><a href="mailto:support@budgetmint.app" class="transition hover:text-white">support@budgetmint.app</a></li>
+                    <li><a href="#download" class="transition hover:text-white">Get the App</a></li>
+                    <li><a href="privacy.html" class="transition hover:text-white">Privacy Policy</a></li>
                 </ul>
             </div>
 
             <div>
                 <h4 class="text-sm font-bold uppercase tracking-wider text-brandMint">Legal</h4>
                 <ul class="mt-4 space-y-2 text-sm">
-                    <li><a href="#" class="transition hover:text-white">Privacy Policy</a></li>
+                    <li><a href="privacy.html" class="transition hover:text-white">Privacy Policy</a></li>
                 </ul>
             </div>
         </div>

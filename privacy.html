@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Privacy Policy — Budget Mint</title>
+    <meta name="description" content="Budget Mint Privacy Policy — data ownership, optional cloud backup, security, and your rights. Updated July 2026.">
+    <link rel="icon" type="image/png" href="images/budget-mint-logo.png">
+    <script>
+      (function () {
+        try {
+          if (localStorage.getItem('bm-theme') === 'dark') {
+            document.documentElement.classList.add('dark');
+          }
+        } catch (e) {}
+      })();
+    </script>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="script/tailwind.config.js"></script>
+    <link rel="stylesheet" href="styles/style.css">
+</head>
+<body class="font-sans bg-cream text-slate-900 antialiased">
+
+    <header class="sticky top-0 z-50 border-b border-slate-100/80 bg-white/90 backdrop-blur-md">
+        <nav class="mx-auto flex max-w-7xl items-center justify-between gap-4 px-6 py-4 lg:px-8">
+            <a href="index.html" class="flex shrink-0 items-center gap-2.5">
+                <img src="images/budget-mint-logo.png" alt="Budget Mint" class="h-10 w-10 rounded-xl object-cover" width="40" height="40">
+                <span class="text-lg font-bold tracking-tight text-brandGreen">Budget <span class="text-brandMint">Mint</span></span>
+            </a>
+            <ul class="hidden items-center gap-8 md:flex">
+                <li><a href="index.html#features" class="text-sm font-medium text-slate-600 transition hover:text-brandGreen">Features</a></li>
+                <li><a href="index.html#tours" class="text-sm font-medium text-slate-600 transition hover:text-brandGreen">Tours</a></li>
+                <li><a href="privacy.html" class="text-sm font-medium text-brandGreen">Privacy</a></li>
+                <li><a href="index.html#download" class="text-sm font-medium text-slate-600 transition hover:text-brandGreen">Download</a></li>
+            </ul>
+            <div class="flex items-center gap-2 sm:gap-3">
+                <button id="theme-toggle" type="button" aria-label="Switch to dark mode" aria-pressed="false"
+                        class="inline-flex h-10 w-10 items-center justify-center rounded-lg text-brandGreen transition hover:bg-brandMint/15">
+                    <svg class="theme-icon-sun h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.75" aria-hidden="true">
+                        <path stroke-linecap="round" stroke-linejoin="round" d="M21.752 15.002A9.72 9.72 0 0118 15.75c-5.385 0-9.75-4.365-9.75-9.75 0-1.33.266-2.597.748-3.752A9.753 9.753 0 003 11.25C3 16.635 7.365 21 12.75 21a9.753 9.753 0 009.002-5.998z"/>
+                    </svg>
+                    <svg class="theme-icon-moon h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.75" aria-hidden="true">
+                        <path stroke-linecap="round" stroke-linejoin="round" d="M12 3v2.25m6.364.386l-1.591 1.591M21 12h-2.25m-.386 6.364l-1.591-1.591M12 18.75V21m-4.773-4.227l-1.591 1.591M5.25 12H3m4.227-4.773L5.636 5.636M15.75 12a3.75 3.75 0 11-7.5 0 3.75 3.75 0 017.5 0z"/>
+                    </svg>
+                </button>
+                <a href="index.html#download"
+                   class="cta-hover hidden rounded-full bg-brandMint px-5 py-2.5 text-sm font-semibold text-brandGreen shadow-sm sm:inline-flex">
+                    Get Budget Mint
+                </a>
+                <button id="nav-toggle" type="button" aria-label="Open menu" aria-expanded="false"
+                        class="inline-flex h-10 w-10 items-center justify-center rounded-lg text-brandGreen md:hidden">
+                    <svg id="nav-icon-open" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                        <path stroke-linecap="round" stroke-linejoin="round" d="M4 6h16M4 12h16M4 18h16"/>
+                    </svg>
+                    <svg id="nav-icon-close" class="hidden h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                        <path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12"/>
+                    </svg>
+                </button>
+            </div>
+        </nav>
+        <div id="mobile-menu" class="hidden border-t border-slate-100 bg-white px-6 py-4 md:hidden">
+            <ul class="flex flex-col gap-3">
+                <li><a href="index.html#features" class="block py-2 text-sm font-medium text-slate-700">Features</a></li>
+                <li><a href="index.html#tours" class="block py-2 text-sm font-medium text-slate-700">Tours</a></li>
+                <li><a href="privacy.html" class="block py-2 text-sm font-medium text-brandGreen">Privacy</a></li>
+                <li><a href="index.html#download" class="block py-2 text-sm font-medium text-slate-700">Download</a></li>
+            </ul>
+        </div>
+    </header>
+
+    <main class="mx-auto max-w-3xl px-6 py-16 lg:px-8 lg:py-20">
+        <p class="text-sm font-semibold uppercase tracking-[0.18em] text-brandMint">Legal</p>
+        <h1 class="mt-3 text-4xl font-extrabold tracking-tight text-brandGreen">Privacy Policy</h1>
+        <p class="mt-3 text-slate-500">Last updated: July 2026</p>
+
+        <div class="prose-privacy mt-12 space-y-10 text-slate-700">
+            <section>
+                <h2 class="text-xl font-bold text-brandGreen">Overview</h2>
+                <p class="mt-3 leading-relaxed">
+                    Budget Mint is a personal finance and group tour bill-split app. We designed it to keep your financial data under your control — local-first on your device, with optional cloud backup only if you choose to sign in.
+                </p>
+            </section>
+
+            <section>
+                <h2 class="text-xl font-bold text-brandGreen">Data Ownership</h2>
+                <p class="mt-3 leading-relaxed">
+                    Your ledger, budgets, tours, and related records are stored primarily in a local database on your device (SQLite). You own this data. We do not require an account to use the core offline features of the app.
+                </p>
+            </section>
+
+            <section>
+                <h2 class="text-xl font-bold text-brandGreen">Firebase Backup (optional)</h2>
+                <p class="mt-3 leading-relaxed">
+                    If you sign in and enable sync, a backup of your data may be stored in Firebase / Firestore solely for backup and multi-device sync. Cloud storage is opt-in. If you never sign in for sync, your finance data stays on your device.
+                </p>
+            </section>
+
+            <section>
+                <h2 class="text-xl font-bold text-brandGreen">Security</h2>
+                <p class="mt-3 leading-relaxed">
+                    The app runs in the device sandbox. You can enable biometric lock (fingerprint / Face ID) to protect access to the app. Biometric credentials are handled by your device’s system — Budget Mint does not collect or store your fingerprint or face data.
+                </p>
+            </section>
+
+            <section>
+                <h2 class="text-xl font-bold text-brandGreen">No Selling or Sharing of Finance Data</h2>
+                <p class="mt-3 leading-relaxed">
+                    We do not sell your financial data to advertisers or analytics networks. We do not share your ledger contents with third parties for marketing. Optional cloud sync is for your backup only.
+                </p>
+            </section>
+
+            <section>
+                <h2 class="text-xl font-bold text-brandGreen">Privacy Mode</h2>
+                <p class="mt-3 leading-relaxed">
+                    Privacy Mode lets you mask balances and amounts on screen (for example with ***) so others nearby cannot easily read your figures. This is a local display preference and does not send masked or unmasked amounts to us beyond what optional sync already covers.
+                </p>
+            </section>
+
+            <section>
+                <h2 class="text-xl font-bold text-brandGreen">Deletion Rights</h2>
+                <p class="mt-3 leading-relaxed">
+                    You can delete your local data and, if applicable, your cloud account / synced data from within the app Settings. After deletion, associated backups under your control are removed according to the deletion flow in the app.
+                </p>
+            </section>
+
+            <section>
+                <h2 class="text-xl font-bold text-brandGreen">Contact</h2>
+                <p class="mt-3 leading-relaxed">
+                    Questions about privacy or your data:
+                    <a href="mailto:support@budgetmint.app" class="font-medium text-brandGreen hover:underline">support@budgetmint.app</a>
+                </p>
+            </section>
+        </div>
+
+        <p class="mt-14">
+            <a href="index.html" class="text-sm font-semibold text-brandMint hover:underline">← Back to Budget Mint</a>
+        </p>
+    </main>
+
+    <footer class="bg-brandGreen text-teal-100">
+        <div class="mx-auto flex max-w-7xl flex-col gap-6 px-6 py-10 sm:flex-row sm:items-center sm:justify-between lg:px-8">
+            <a href="index.html" class="flex items-center gap-2.5">
+                <img src="images/budget-mint-logo.png" alt="Budget Mint" class="h-9 w-9 rounded-xl object-cover" width="36" height="36">
+                <span class="font-bold text-white">Budget <span class="text-brandMint">Mint</span></span>
+            </a>
+                <div class="flex flex-wrap gap-6 text-sm">
+                <a href="help.html" class="transition hover:text-white">Help Center</a>
+                <a href="privacy.html" class="transition hover:text-white">Privacy Policy</a>
+                <a href="mailto:support@budgetmint.app" class="transition hover:text-white">Support</a>
+            </div>
+        </div>
+        <div class="border-t border-white/10">
+            <p class="mx-auto max-w-7xl px-6 py-5 text-center text-sm text-teal-100/70 lg:px-8 lg:text-left">
+                © 2026 Budget Mint. All rights reserved.
+            </p>
+        </div>
+    </footer>
+
+    <script src="script/script.js"></script>
+</body>
+</html>
