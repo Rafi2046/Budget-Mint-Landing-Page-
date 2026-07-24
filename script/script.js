@@ -61,6 +61,30 @@
     });
   }
 
+  // Navbar links: white at top → mint when scrolled
+  (function initNavScroll() {
+    var nav = document.querySelector('.nav-glass');
+    if (!nav) return;
+
+    var SCROLL_THRESHOLD = 24;
+    var ticking = false;
+
+    function update() {
+      ticking = false;
+      nav.classList.toggle('is-scrolled', window.scrollY > SCROLL_THRESHOLD);
+    }
+
+    function onScroll() {
+      if (!ticking) {
+        ticking = true;
+        requestAnimationFrame(update);
+      }
+    }
+
+    window.addEventListener('scroll', onScroll, { passive: true });
+    update();
+  })();
+
   // Hero-style surfaces: spotlight + parallax + particle field (desktop only)
   (function initHeroPointerFx() {
     var surfaces = Array.prototype.slice.call(document.querySelectorAll('.hero-finance'));

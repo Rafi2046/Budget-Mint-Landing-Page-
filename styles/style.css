@@ -28,10 +28,20 @@
 
 .nav-glass .nav-links a {
   color: rgba(255, 255, 255, 0.92);
+  transition: color 0.3s ease;
 }
 
 .nav-glass .nav-links a:hover {
   color: #2ebd85;
+}
+
+/* Scrolled: only Features / Tours / Privacy / Download → mint */
+.nav-glass.is-scrolled .nav-links a {
+  color: #2ebd85;
+}
+
+.nav-glass.is-scrolled .nav-links a:hover {
+  color: #ffffff;
 }
 
 .nav-glass .text-brandGreen {
@@ -66,10 +76,20 @@
 
 .nav-glass-menu a:not(.btn-solid):not(.bg-white) {
   color: rgba(255, 255, 255, 0.92);
+  transition: color 0.3s ease, background 0.3s ease;
 }
 
 .nav-glass-menu a:not(.btn-solid):not(.bg-white):hover {
   background: rgba(255, 255, 255, 0.08);
+}
+
+.nav-glass.is-scrolled .nav-glass-menu a:not(.btn-solid):not(.bg-white) {
+  color: #2ebd85;
+}
+
+.nav-glass.is-scrolled .nav-glass-menu a:not(.btn-solid):not(.bg-white):hover {
+  background: rgba(46, 189, 133, 0.12);
+  color: #2ebd85;
 }
 
 html.dark .nav-glass {
@@ -86,6 +106,14 @@ html.dark .nav-glass .nav-links a {
 
 html.dark .nav-glass .nav-links a:hover {
   color: #2ebd85;
+}
+
+html.dark .nav-glass.is-scrolled .nav-links a {
+  color: #2ebd85;
+}
+
+html.dark .nav-glass.is-scrolled .nav-links a:hover {
+  color: #ffffff;
 }
 
 html.dark .nav-glass-menu {
